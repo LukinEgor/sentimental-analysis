@@ -1,0 +1,10 @@
+version: '2'
+services:
+
+  front:
+    build: front/.
+    command: node server.js
+    volumes:
+      - ./front/.:/usr/src
+    ports:
+      - "8080:8080"
