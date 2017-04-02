@@ -8,3 +8,11 @@ services:
       - ./front/.:/usr/src
     ports:
       - "8080:8080"
+
+  notebook:
+    image: continuumio/anaconda3
+    command: bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/notes --ip='*' --port=8888 --no-browser"
+    volumes:
+      - ./notes/.:/notes
+    ports:
+      - "8888:8888"
