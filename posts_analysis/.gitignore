@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -15,3 +19,11 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+# React on Rails
+npm-debug.log*
+node_modules
+
+/config/initializers/devise.rb
+
+# Generated js bundles
+/app/assets/webpack/*

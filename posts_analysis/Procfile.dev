@@ -1,0 +1,2 @@
+web: bash -c "bundle install && rake db:create db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+client: sh -c 'rm app/assets/webpack/* || true && cd client && bundle exec rake react_on_rails:locale && npm run build:development'
