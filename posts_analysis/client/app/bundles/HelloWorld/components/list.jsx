@@ -2,11 +2,11 @@ import React from 'react';
 
 export default class List extends React.Component {
   render() {
-    console.log(this.props.data);
-    const keywords = this.props.data ? this.props.data.map((req) => this.renderRequest(req)) : 'empty';
+    console.log("list:");
+    console.log(this.props);
+    // const keywords = this.props.stats ? this.props.stats.map((req) => this.renderRequest(req)) : 'empty';
     return <div>
       <h1>List:</h1>
-      {keywords}
     </div>;
   }
 

@@ -6,7 +6,7 @@ import List from '../components/list';
 import * as statActions from '../actions/statActions';
 
 const mapStateToProps = state => ({
-  stats: state.stats
+  stats: state
 })
 
 class Dashboard extends React.Component {
@@ -15,8 +15,8 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props);
-    const actions = bindActionCreators(statActions, this.props.dispatch);
+   const { dispatch, stats } = this.props;
+    const actions = bindActionCreators(statActions, dispatch);
     const { addStat } = actions;
 
     App.cable.subscriptions.create("PostAnalysisChannel", {
@@ -25,6 +25,7 @@ class Dashboard extends React.Component {
       received: (data) => {
         console.log(data);
         addStat(data);
+        // dispatch(act);
         console.log(this.props);
       }
     })
@@ -35,8 +36,9 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const { dispatch, stats } = this.props;
     return <div>
-       <List data={this.props.stats}/>
+       <List stats={stats}/>
        <Form />
     </div>;
   }

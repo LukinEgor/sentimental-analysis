@@ -4,7 +4,7 @@ import ReactOnRails from 'react-on-rails';
 
 export default class Form extends React.Component {
 
-  onSubmit(e) {
+  submit(e) {
     const csrfToken = ReactOnRails.authenticityToken();
     return $.ajax({
       url: '/post_analysis/run',
@@ -12,17 +12,17 @@ export default class Form extends React.Component {
       data: {
         uft8: "✓",
         authenticity_token: csrfToken,
-        keyword: e.target.keyword.value,
-        count: e.target.count.value
+        keyword: $('#keyword').val(),
+        count: $('#count').val()
       }
     })
   }
 
   render() {
-    return <form onSubmit={this.onSubmit}>
+    return <div>
       <p><input type="text" name="keyword" id="keyword"/></p>
       <p><input type="text" name="count" id="count"/></p>
-      <button type="submit">Let's Go</button>
-    </form>;
+      <button onClick={this.submit}>Let's Go</button>
+    </div>;
   }
 }
